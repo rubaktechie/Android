@@ -11,99 +11,111 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:padding="10dp"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:weightSum="1">
 
         <RelativeLayout
-            android:layout_width="74dip"
+            android:layout_width="100dip"
             android:layout_height="match_parent"
             android:id="@+id/layout1">
             <TextView
                 android:id="@+id/title0"
-                android:layout_width="74dip"
+                android:layout_width="100dip"
+                android:textSize="@dimen/font_size1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"/>
+                />
 
             <TextView
                 android:id="@+id/title1"
-                android:layout_width="74dip"
+                android:layout_width="100dip"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:textSize="@dimen/font_size1"
                 android:layout_below="@id/title0"
-                android:textStyle="bold" />
+                 />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/divider1"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginStart="20sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginStart="10sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             >
 
             <View
                 android:layout_width="2dp"
-                android:layout_height="53dp"
+                android:layout_height="match_parent"
                 android:background="#909090" />
         </RelativeLayout>
 
 
 
         <RelativeLayout
-            android:layout_width="74dip"
+            android:layout_width="120dip"
             android:layout_height="match_parent"
-            android:id="@+id/layout2">
+            android:id="@+id/layout2"
+            android:layout_weight="0.19">
             <TextView
                 android:id="@+id/title2"
-                android:layout_width="74dip"
+                android:layout_width="120dip"
+                android:textSize="@dimen/font_size1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"/>
+                />
+            <RelativeLayout
+                android:id="@+id/divider_center"
+                android:layout_width="wrap_content"
+                android:paddingTop="3dp"
+                android:textSize="@dimen/font_size1"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title2"
+                >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D3D3D3" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/title3"
-                android:layout_width="74dip"
+                android:paddingTop="3dp"
+                android:layout_width="120dip"
+                android:textSize="@dimen/font_size1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_below="@id/title2"
-                android:textStyle="bold" />
+                android:layout_below="@id/divider_center"
+                 />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/divider2"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginStart="20sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginStart="10sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <View
                 android:layout_width="2dp"
-                android:layout_height="53dp"
+                android:layout_height="match_parent"
                 android:background="#909090" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="74dip"
+            android:layout_width="50dip"
             android:layout_height="match_parent"
             android:id="@+id/layout3">
             <TextView
                 android:id="@+id/title4"
-                android:layout_width="74dip"
+                android:layout_width="60dip"
+                android:textSize="@dimen/font_size1"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:gravity="center"
-                android:textStyle="bold"/>
+                />
 
-            <TextView
-                android:id="@+id/title5"
-                android:layout_width="74dip"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_below="@id/title4"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 

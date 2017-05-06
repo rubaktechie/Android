@@ -1,0 +1,630 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:id="@+id/appBarLayout"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/appBarLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/appBarLayout"
+            android:orientation="vertical"
+            android:textSize="@dimen/font_size">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:theme="@style/Theme.App.Base">
+
+                            <TextView
+                                android:id="@+id/source"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Pondicherry, Puducherry, India"
+                                android:textColor="#000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:theme="@style/Theme.App.Base"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:id="@+id/transmit_days"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerHorizontal="true"
+                                android:layout_weight="0.84"
+                                android:drawableBottom="@drawable/ic_arrow_forward_black_24dp"
+                                android:gravity="center"
+                                android:text="5  days"
+                                android:textColor="#000" />
+
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:theme="@style/Theme.App.Base">
+
+                            <TextView
+                                android:id="@+id/destination"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Siliguri, West Bengal, India"
+                                android:textColor="#000" />
+
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:id="@+id/layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:theme="@style/Theme.App.Base">
+
+                            <TextView
+                                android:id="@+id/truck_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="OPEN BODY - 12 W"
+                                android:textColor="#FF6347" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:theme="@style/Theme.App.Base">
+
+                            <TextView
+                                android:id="@+id/material_description"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Fruits and Vegetables"
+                                android:textColor="#000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner1"
+                        android:layout_width="90dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/distance"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="#000"
+                             />
+
+                        <TextView
+                            android:id="@+id/title1"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/distance"
+                            android:gravity="center"
+                            android:text="DISTANCE"
+                            android:textColor="#909090"
+                             />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner2"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/offer_rate"
+                            android:layout_width="110dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="~46400"
+                            android:textColor="#000"
+                             />
+
+                        <TextView
+                            android:id="@+id/title3"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/offer_rate"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="RATE"
+                            android:textColor="#909090"
+                             />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner3"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/actual_weight"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="14 T"
+                            android:textColor="#000"
+                             />
+
+                        <TextView
+                            android:id="@+id/title4"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/actual_weight"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="WEIGHT"
+                            android:textColor="#909090"
+                             />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner4"
+                        android:layout_width="90dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/trip_date"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="2016-11-16"
+                            android:textColor="#000"
+                            />
+
+                        <TextView
+                            android:id="@+id/title6"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/trip_date"
+                            android:gravity="center"
+                            android:text="PICKUP"
+                            android:textColor="#909090"
+                             />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner5"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/advance_amount"
+                            android:layout_width="110dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="~46400"
+                            android:textColor="#000"
+                            />
+
+                        <TextView
+                            android:id="@+id/advance_percentage"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/advance_amount"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="ADVANCE (90%)"
+                            android:textColor="#909090"
+                            />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner6"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/load_age"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="an hour"
+                            android:textColor="#000"
+                             />
+
+                        <TextView
+                            android:id="@+id/title7"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/load_age"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="LOAD AGE"
+                            android:textColor="#909090"
+                             />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:scrollbars="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner8"
+                        android:layout_width="90dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/loaded_mamool"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="800"
+                            android:textColor="#000"
+                            />
+
+                        <TextView
+                            android:id="@+id/title8"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/loaded_mamool"
+                            android:gravity="center"
+                            android:text="Loading Mamool"
+                            android:textColor="#909090"
+                             />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner9"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/unloaded_mamool"
+                            android:layout_width="110dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="800"
+                            android:textColor="#000"
+                            />
+
+                        <TextView
+                            android:id="@+id/title10"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/unloaded_mamool"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="Unloading Mamool"
+                            android:textColor="#909090"
+                             />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/divider10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginStart="10sp">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#909090" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner10"
+                        android:layout_width="100dip"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/other_expenditure"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                             />
+
+                        <TextView
+                            android:id="@+id/title11"
+                            android:layout_width="100dip"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/other_expenditure"
+                            android:gravity="center"
+                            android:paddingTop="3dp"
+                            android:text="Other Expenditure"
+                            android:textColor="#909090"
+                            />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layout_inner13"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:layout_width="250sp"
+                            android:gravity="center"
+                            android:textColor="#fff"
+                            android:id="@+id/btn1"
+                            android:background="#0000FF"
+                            android:layout_height="wrap_content"
+                            android:text="Move to Progress" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

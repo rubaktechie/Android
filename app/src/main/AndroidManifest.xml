@@ -25,7 +25,7 @@
             android:value="@integer/google_play_services_version"/>
         <activity
             android:name=".activity.AddActivity"
-            android:label="Assest Tracker"
+            android:label="@string/app_name"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/MyMaterialTheme">
             <intent-filter>
@@ -38,7 +38,96 @@
             </intent-filter>
 
         </activity>
+        <activity
+            android:name=".activity.EditDetail"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.viewDetail"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.viewDetail2"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.viewDetail3"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.viewDetail4"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.UpdateDetail"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.loadtracker.activity.MainActivity"/>
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.loadtracker.activity;
 
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,9 +32,11 @@ import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-
 import com.loadtracker.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,7 +45,7 @@ import java.util.Locale;
 import java.util.Map;
 
 
-public class AddActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+public class EditDetail extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks{
     private EditText source,destination,transmit_days,truck_type,material_type,loading_point,loading_mamool,unloading_mamool,offer_rate,advance_percentage,advance_amount,other_expenditure,actual_weight,status;
     private Button save;
     private Toolbar toolbar;
@@ -60,10 +61,10 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
             new LatLng(37.398160, -122.180831), new LatLng(37.430610, -121.972090));
     final Calendar myCalendar = Calendar.getInstance();
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add);
-
+        setContentView(R.layout.edit);
 
         source = (AutoCompleteTextView)findViewById(R.id.source);
         destination = (AutoCompleteTextView)findViewById(R.id.destination);
@@ -79,11 +80,38 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
         advance_amount = (EditText)findViewById(R.id.advance_amount);
         other_expenditure = (EditText)findViewById(R.id.other_expenditure);
         actual_weight = (EditText)findViewById(R.id.actual_weight);
-//        save = (Button)findViewById(R.id.save);
         add = (FloatingActionButton)findViewById(R.id.fab);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        String profile = intent.getStringExtra("array");
+        try {
+            JSONObject object = new JSONObject(profile);
+            source.setText(object.getString("from_location_name"));
+            destination.setText(object.getString("to_location_name"));
+            schedule_date.setText(object.getString("trip_date").substring(0, 10));
+            transmit_days.setText(object.getString("transit_days"));
+            truck_type.setText(object.getString("truck_type"));
+            material_type.setText(object.getString("product"));
+            loading_point.setText(object.getString("loading_point_no"));
+            loading_mamool.setText(object.getString("loading_mamool"));
+            unloading_mamool.setText(object.getString("unloading_mamool"));
+            offer_rate.setText(object.getString("offerrate"));
+            advance_percentage.setText(object.getString("advance_percentage"));
+            advance_amount.setText(object.getString("advance_amount"));
+            other_expenditure.setText(object.getString("other_expenditure"));
+            actual_weight.setText(object.getString("actual_weight"));
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         String[] items = new String[]{"CONTAINER",
@@ -111,7 +139,7 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
                 android.R.layout.simple_dropdown_item_1line, lpoint);
         MaterialBetterSpinner Spinner = (MaterialBetterSpinner)
                 findViewById(R.id.loading_point);
-       Spinner.setAdapter(array);
+        Spinner.setAdapter(array);
 
 
         final String[] material = new String[]{
@@ -155,10 +183,10 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
         materialDesignSpinners.setAdapter(arrayAdapters);
 
 
-        mGoogleApiClient = new GoogleApiClient.Builder(AddActivity.this)
+        mGoogleApiClient = new GoogleApiClient.Builder(EditDetail.this)
                 .addApi(Places.GEO_DATA_API)
-                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
-                .addConnectionCallbacks(this)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, (GoogleApiClient.OnConnectionFailedListener) this)
+                .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) this)
                 .build();
         mAutocompleteTextView = (AutoCompleteTextView) findViewById(R.id.source);
         nAutocompleteTextView = (AutoCompleteTextView) findViewById(R.id.destination);
@@ -188,7 +216,7 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
         schedule_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddActivity.this, date, myCalendar
+                new DatePickerDialog(EditDetail.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -256,7 +284,7 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
 
                 /*Checking all values entered*/
                 if(check_required(source,source_val) && check_required(destination,destination_val) && check_required(schedule_date,schedule_date_val) && check_required(transmit_days,transmit_days_val) &&check_required(truck_type,truck_type_val) &&check_required(material_type,material_val) &&check_required(actual_weight,actual_weight_val) &&check_required(offer_rate,offer_rate_val) &&check_required(loading_point,loading_point_val) &&check_required(advance_percentage,advance_percentage_val) &&check_required(advance_amount,advance_amount_val) &&check_required(loading_mamool,loading_mamool_val) &&check_required(unloading_mamool,unloading_mamool_val) &&check_required(other_expenditure,other_expenditure_val)){
-                    RequestQueue queue = Volley.newRequestQueue(AddActivity.this);
+                    RequestQueue queue = Volley.newRequestQueue(EditDetail.this);
                     String url = "http://rubak.cloudapp.net/android/index.php";
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                             new Response.Listener<String>() {
@@ -264,19 +292,19 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
                                 public void onResponse(String response) {
                                     try{
 
-                                        Toast.makeText(AddActivity.this,response,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(EditDetail.this,response,Toast.LENGTH_LONG).show();
 
                                     }
                                     catch (Exception e){
                                         String msg = e.getMessage();
-                                        Toast.makeText(AddActivity.this,msg,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(EditDetail.this,msg,Toast.LENGTH_LONG).show();
                                     }
                                 }
                             },
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(AddActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                                    Toast.makeText(EditDetail.this,error.toString(),Toast.LENGTH_LONG).show();
                                 }
                             }){
                         protected Map<String,String> getParams() {
@@ -310,101 +338,91 @@ public class AddActivity extends AppCompatActivity implements GoogleApiClient.On
                 }
             }
         });
+    }
+    private void updateLabel() {
+
+        String myFormat = "MM-dd-yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        schedule_date.setText(sdf.format(myCalendar.getTime()));
+    }
 
 
-
+    private AdapterView.OnItemClickListener mAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final com.loadtracker.activity.PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
+            final String placeId = String.valueOf(item.placeId);
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
         }
-
-        private void updateLabel() {
-
-            String myFormat = "MM-dd-yy";
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-            schedule_date.setText(sdf.format(myCalendar.getTime()));
+    };
+    private AdapterView.OnItemClickListener nAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final com.loadtracker.activity.PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
+            final String placeId = String.valueOf(item.placeId);
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(nUpdatePlaceDetailsCallback);
         }
-
-
-            private AdapterView.OnItemClickListener mAutocompleteClickListener
-                    = new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final com.loadtracker.activity.PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
-                    final String placeId = String.valueOf(item.placeId);
-                    PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
-                            .getPlaceById(mGoogleApiClient, placeId);
-                    placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
-                }
-            };
-              private AdapterView.OnItemClickListener nAutocompleteClickListener
-                    = new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final com.loadtracker.activity.PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
-                    final String placeId = String.valueOf(item.placeId);
-                    PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
-                            .getPlaceById(mGoogleApiClient, placeId);
-                    placeResult.setResultCallback(nUpdatePlaceDetailsCallback);
-                }
-            };
-            private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
-                    = new ResultCallback<PlaceBuffer>() {
-                @Override
-                public void onResult(PlaceBuffer places) {
-                    if (!places.getStatus().isSuccess()) {
-                        Log.e(LOG_TAG, "Place query did not complete. Error: " +
-                                places.getStatus().toString());
-                        return;
-                    }
-                    final Place place = places.get(0);
-                    CharSequence attributions = places.getAttributions();
-
-                    if (attributions != null) {
-                    }
-                }
-            };
-            private ResultCallback<PlaceBuffer> nUpdatePlaceDetailsCallback
-                    = new ResultCallback<PlaceBuffer>() {
-                @Override
-                public void onResult(PlaceBuffer places) {
-                    if (!places.getStatus().isSuccess()) {
-                        Log.e(LOG_TAG, "Place query did not complete. Error: " +
-                                places.getStatus().toString());
-                        return;
-                    }
-                    final Place place = places.get(0);
-                    CharSequence attributions = places.getAttributions();
-
-                    if (attributions != null) {
-                    }
-                }
-            };
-            @Override
-            public void onConnected(Bundle bundle) {
-                mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
-                Log.i(LOG_TAG, "Google Places API connected.");
-
+    };
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
+            = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                Log.e(LOG_TAG, "Place query did not complete. Error: " +
+                        places.getStatus().toString());
+                return;
             }
+            final Place place = places.get(0);
+            CharSequence attributions = places.getAttributions();
 
-            @Override
-            public void onConnectionFailed(ConnectionResult connectionResult) {
-                Log.e(LOG_TAG, "Google Places API connection failed with error code: "
-                        + connectionResult.getErrorCode());
-
-                Toast.makeText(this,
-                        "Google Places API connection failed with error code:" +
-                                connectionResult.getErrorCode(),
-                        Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onConnectionSuspended(int i) {
-                mPlaceArrayAdapter.setGoogleApiClient(null);
-                Log.e(LOG_TAG, "Google Places API connection suspended.");
+            if (attributions != null) {
             }
         }
+    };
+    private ResultCallback<PlaceBuffer> nUpdatePlaceDetailsCallback
+            = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                Log.e(LOG_TAG, "Place query did not complete. Error: " +
+                        places.getStatus().toString());
+                return;
+            }
+            final Place place = places.get(0);
+            CharSequence attributions = places.getAttributions();
 
+            if (attributions != null) {
+            }
+        }
+    };
+    @Override
+    public void onConnected(Bundle bundle) {
+        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
+        Log.i(LOG_TAG, "Google Places API connected.");
 
+    }
 
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e(LOG_TAG, "Google Places API connection failed with error code: "
+                + connectionResult.getErrorCode());
 
+        Toast.makeText(this,
+                "Google Places API connection failed with error code:" +
+                        connectionResult.getErrorCode(),
+                Toast.LENGTH_LONG).show();
+    }
 
-
+    @Override
+    public void onConnectionSuspended(int i) {
+        mPlaceArrayAdapter.setGoogleApiClient(null);
+        Log.e(LOG_TAG, "Google Places API connection suspended.");
+    }
+}
